@@ -8,6 +8,8 @@
     <!--If you don,t add this permission on PIE, foreground service exception will be thrown-->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
 
     <application
         android:name=".App"
@@ -33,6 +35,15 @@
         <service android:name=".ExampleJobIntentService"
             android:permission="android.permission.BIND_JOB_SERVICE"
             />
+
+        <!--Implicit Broadcast. that means registered statically-->
+        <receiver android:name=".ExampleBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+
+        </receiver>
 
     </application>
 
