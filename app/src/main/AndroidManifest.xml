@@ -3,6 +3,11 @@
     package="com.abdul_waheed.serviceandbackgroundtask">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
+    <!--If you don,t add this permission on PIE, foreground service exception will be thrown-->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -23,6 +28,7 @@
             android:permission="android.permission.BIND_JOB_SERVICE"/>
         <service android:name=".ExampleService"
             />
+        <service android:name=".ExampleIntentService"/>
 
     </application>
 

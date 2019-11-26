@@ -64,16 +64,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String input = etInput.getText().toString();
-                Intent serviceIntent = new Intent(MainActivity.this, ExampleService.class);
+                //Intent service work
+                Intent serviceIntent = new Intent(MainActivity.this, ExampleIntentService.class);
+                serviceIntent.putExtra("inputExtra", input);
+                ContextCompat.startForegroundService(MainActivity.this, serviceIntent);
+                //startService(serviceIntent);
+
+                //Service work
+                /*Intent serviceIntent = new Intent(MainActivity.this, ExampleService.class);
                 serviceIntent.putExtra("inputExtra", input);
                 //startService(serviceIntent);
 
-                /*As below method is not available before api level 26 the convinenint way to call is below
+                *//*As below method is not available before api level 26 the convinenint way to call is below
                 *startForegroundService(serviceIntent);
-                * */
+                * *//*
                 ContextCompat.startForegroundService(MainActivity.this, serviceIntent);
 
-                /*
+                *//*
                 * startService method works here because while our app still open. If you want to start your service while your app
                 * is in background 'startForeGround()' method should be called instead. This tells to the system that you want to
                 * promote forground service as quickly as possible. And after calling this method you have a time window of 5 seconds
